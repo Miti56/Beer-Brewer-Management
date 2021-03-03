@@ -1,0 +1,1 @@
+{"info_beer": [{"name": "gertrude", "quantity": "0"}]}

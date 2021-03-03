@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Brew Process</title>
+</head>
+<center>
+<body>
+
+<h1> <u>Brewing Process</u> </h1>
+<h2>Calendar // Time </h2>
+<script language="javascript" type="text/javascript">
+var day_of_week = new Array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
+var month_of_year = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
+
+//  DECLARE AND INITIALIZE VARIABLES
+var Calendar = new Date();
+
+var year = Calendar.getFullYear();     // Returns year
+var month = Calendar.getMonth();    // Returns month (0-11)
+var today = Calendar.getDate();    // Returns day (1-31)
+var weekday = Calendar.getDay();    // Returns day (1-31)
+
+var DAYS_OF_WEEK = 7;    // "constant" for number of days in a week
+var DAYS_OF_MONTH = 31;    // "constant" for number of days in a month
+var cal;    // Used for printing
+
+Calendar.setDate(1);    // Start the calendar day at '1'
+Calendar.setMonth(month);    // Start the calendar month at now
+
+
+/* VARIABLES FOR FORMATTING
+NOTE: You can format the 'BORDER', 'BGCOLOR', 'CELLPADDING', 'BORDERCOLOR'
+      tags to customize your caledanr's look. */
+
+var TR_start = '<TR>';
+var TR_end = '</TR>';
+var highlight_start = '<TD WIDTH="30"><TABLE CELLSPACING=0 BORDER=1 BGCOLOR=DEDEFF BORDERCOLOR=CCCCCC><TR><TD WIDTH=20><B><CENTER>';
+var highlight_end   = '</CENTER></TD></TR></TABLE></B>';
+var TD_start = '<TD WIDTH="30"><CENTER>';
+var TD_end = '</CENTER></TD>';
+
+/* BEGIN CODE FOR CALENDAR
+NOTE: You can format the 'BORDER', 'BGCOLOR', 'CELLPADDING', 'BORDERCOLOR'
+tags to customize your calendar's look.*/
+
+cal =  '<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=0 BORDERCOLOR=BBBBBB><TR><TD>';
+cal += '<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=2>' + TR_start;
+cal += '<TD COLSPAN="' + DAYS_OF_WEEK + '" BGCOLOR="#EFEFEF"><CENTER><B>';
+cal += month_of_year[month]  + '   ' + year + '</B>' + TD_end + TR_end;
+cal += TR_start;
+
+// LOOPS FOR EACH DAY OF WEEK
+for(index=0; index < DAYS_OF_WEEK; index++)
+{
+
+// BOLD TODAY'S DAY OF WEEK
+if(weekday == index)
+cal += TD_start + '<B>' + day_of_week[index] + '</B>' + TD_end;
+
+// PRINTS DAY
+else
+cal += TD_start + day_of_week[index] + TD_end;
+}
+
+cal += TD_end + TR_end;
+cal += TR_start;
+
+// FILL IN BLANK GAPS UNTIL TODAY'S DAY
+for(index=0; index < Calendar.getDay(); index++)
+cal += TD_start + '  ' + TD_end;
+
+// LOOPS FOR EACH DAY IN CALENDAR
+for(index=0; index < DAYS_OF_MONTH; index++)
+{
+if( Calendar.getDate() > index )
+{
+  // RETURNS THE NEXT DAY TO PRINT
+  week_day =Calendar.getDay();
+
+  // START NEW ROW FOR FIRST DAY OF WEEK
+  if(week_day == 0)
+  cal += TR_start;
+
+  if(week_day != DAYS_OF_WEEK)
+  {
+
+  // SET VARIABLE INSIDE LOOP FOR INCREMENTING PURPOSES
+  var day  = Calendar.getDate();
+
+  // HIGHLIGHT TODAY'S DATE
+  if( today==Calendar.getDate() )
+  cal += highlight_start + day + highlight_end + TD_end;
+
+  // PRINTS DAY
+  else
+  cal += TD_start + day + TD_end;
+  }
+
+  // END ROW FOR LAST DAY OF WEEK
+  if(week_day == DAYS_OF_WEEK)
+  cal += TR_end;
+  }
+
+  // INCREMENTS UNTIL END OF THE MONTH
+  Calendar.setDate(Calendar.getDate()+1);
+
+}// end for loop
+
+cal += '</TD></TR></TABLE></TABLE>';
+
+//  PRINT CALENDAR
+document.write(cal);
+
+
+</script>
+<script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+<p>
+<body onload="startTime()">
+<div id="txt"></div>
+
+<h1> <u>Hot brew Stage</u> </h1>
+<p1>Only takes few hours</p1>
+<p1>Select the total amount of ingredients to Hot Brew</p1>
+<p>
+<form action="/" method="get">
+    <input name="hotbrew">
+    <input type="submit">
+<input type="checkbox" name="cleardata3" id = "cleardata3"/>
+    <label for = "cleardata3">Clear Data</label>
+    <p>
+    <p1>You have {{ info_hot_brew }}L of ingredinets ready to be fermented</p1>
+<p>
+<h1> <u>Ferment beer</u> </h1>
+<p1>Input amount of beer to ferment</p1>
+<p>
+<p1>ALWAYS SUBMIT SOMETHING // IF NOT PROGRAM CRASH :(</p1>
+
+<p>
+<form action="/" method="get">
+    <input name="name">
+    <input type="submit">
+    <input type="checkbox" name="cleardata" id = "cleardata"/>
+    <label for = "cleardata">Clear Data</label>
+    <input type="checkbox" name="checkbox1" id = "checkbox1"/>
+    <label for = "cleardata">Albert</label>
+    <input type = "checkbox" name="checkbox2" id = "checkbox2"/>
+    <label for = "checkbox2">Brigadiers</label>
+    <input type = "checkbox" name="checkbox3" id = "checkbox3"/>
+    <label for = "checkbox3">Camilla</label>
+    <input type = "checkbox" name="checkbox4" id = "checkbox4"/>
+    <label for = "checkbox3">Dylon</label>
+    <input type = "checkbox" name="checkbox5" id = "checkbox5"/>
+    <label for = "checkbox3">Emily</label>
+    <input type = "checkbox" name="checkbox6" id = "checkbox6"/>
+    <label for = "checkbox3">Florence</label>
+
+
+            <p>
+            Total --> {{tank1_volume}}/5400
+            <p>
+    <h1> Free Space </h1>
+            {{ warnings }}
+            <p>
+            There is :{{ info_beer_albert }}L  in Albert tank/1000
+            <p>
+            There is :{{ info_beer_brigadiers }}L in Brigadiers tank/800
+            <p>
+            There is :{{ info_beer_camilla }}L  in Camilla tank/1000
+            <p>
+            There is :{{ info_beer_dylon }}L  in Dylon tank/800
+            <p>
+            There is :{{ info_beer_emily }}L  in Emily tank/800
+            <p>
+            There is :{{ info_beer_florence }}L  in Florence tank/800
+            <p>
+
+
+
+
+
+
+
+<body>
+<h1> <u>Fermentation Process</u> </h1>
+<p1>There is {{ fermented }} L of fermented beer</p1>
+<p>
+<p1>Choose where to put the {{ fermented }} of fermented beer</p1>
+<p>
+<p1>This will take two weeks</p1>
+<p>
+<form action="/" method="get">
+    <input name="fermented">
+    <input type="submit">
+    <input type="checkbox" name="cleardata2" id = "cleardata2"/>
+    <label for = "cleardata2">Clear Data</label>
+    <input type = "checkbox" name="gertrude" id = "gertrude"/>
+    <label for = "gertrude">Gertrude</label>
+    <input type = "checkbox" name="harry" id = "harry"/>
+    <label for = "harry">Harry</label>
+    <p>
+
+    <h1> Free Space </h1>
+<p>
+{{ warnings_stage_2}}
+<p>
+    There is :{{ fermented_gertrude }} L  in Gertrude tank/680
+<p>
+    There is :{{ fermented_harry }} L  in Harry tank/680
+<p>
+<h1> <u>Bottling Process</u> </h1>
+<p1>There is {{ bottling_number }} L of beer to bottle</p1>
+<p>
+    <p1>If each beer takes 2s to put inside a 500ml bottle, it will take: {{ time_remaining}}h</p1>
+<p>
+
+    <h1> <u>See all data</u> </h1>
+
+<p2><a href="http://127.0.0.1:5000/data">See all data</a></p2>
+
+</body>
+</center>
+</html>

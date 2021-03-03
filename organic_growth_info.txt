@@ -1,0 +1,1 @@
+{"organic_growth_info": [{"growth": 682.4561403508773}]}
